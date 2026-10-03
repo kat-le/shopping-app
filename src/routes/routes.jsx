@@ -1,6 +1,6 @@
 import Cart from '../components/Cart'
 import Layout from '../components/Layout';
-import Shop from '../components/Shop'
+import Shop from '../components/Shop/Shop'
 import Home from '../components/Home'
 import About from '../components/About';
 import Error from '../components/ErrorPage';

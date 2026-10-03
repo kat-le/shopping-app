@@ -1,0 +1,141 @@
+.shop-hero {
+  display: flex;
+  min-height: clamp(420px, 54vh, 600px);
+  align-items: stretch;
+  background: var(--color-paper);
+}
+
+.shop-hero__content {
+  display: grid;
+  width: min(100%, 1600px);
+  min-height: inherit;
+  grid-template-rows: 1fr auto;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.05fr);
+  column-gap: clamp(32px, 7vw, 112px);
+  row-gap: clamp(28px, 4vw, 48px);
+  align-items: center;
+  margin-inline: auto;
+  padding: clamp(32px, 4vw, 56px) clamp(24px, 7vw, 112px);
+}
+
+.shop-hero__title {
+  grid-area: 1 / 1;
+  align-items: flex-start;
+  animation: shop-title-enter 900ms ease-out both;
+}
+
+.shop-hero__title .eyebrow {
+  margin: 0 0 20px;
+  color: var(--color-accent);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.shop-hero__title h1 {
+  max-width: 620px;
+  margin: 0;
+  font-size: clamp(48px, 7.2vw, 104px);
+  font-weight: 400;
+  letter-spacing: -0.075em;
+  line-height: 0.98;
+}
+
+.shop-hero__description {
+  grid-area: 2 / 1 / 3 / -1;
+  justify-self: center;
+  max-width: 360px;
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 13px;
+  line-height: 1.9;
+  text-align: center;
+  animation: shop-description-enter 900ms ease-out 350ms both;
+}
+
+.shop-hero__image {
+  grid-area: 1 / 2;
+  display: block;
+  width: 100%;
+  min-height: 340px;
+  aspect-ratio: 0.94;
+  object-fit: contain;
+  animation: shop-image-enter 1000ms ease-out 150ms both;
+}
+
+@keyframes shop-title-enter {
+  from {
+    opacity: 0;
+    transform: translateX(-28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes shop-image-enter {
+  from {
+    opacity: 0;
+    transform: translateX(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes shop-description-enter {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 700px) {
+  .shop-hero {
+    min-height: auto;
+  }
+
+  .shop-hero__content {
+    grid-template-rows: auto auto auto;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 36px 24px 32px;
+  }
+
+  .shop-hero__title {
+    grid-area: 1 / 1;
+  }
+
+  .shop-hero__title h1 {
+    font-size: clamp(48px, 13vw, 72px);
+  }
+
+  .shop-hero__description {
+    grid-area: 3 / 1;
+    justify-self: center;
+  }
+
+  .shop-hero__image {
+    grid-area: 2 / 1;
+    min-height: 0;
+    aspect-ratio: 1.15;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shop-hero__title,
+  .shop-hero__image,
+  .shop-hero__description {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
