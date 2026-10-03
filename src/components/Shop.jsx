@@ -1,17 +1,18 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getProducts } from "../api/productsApi";
 
 function Shop() {
+    const [perfumes, setPerfumes] = useState([]);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         async function fetchProducts() {
-            const fragrances = await getProducts("fragrances");
-            const beauty = await getProducts("beauty");
-            const skincare = await getProducts("skin-care");
-
-            console.log("Fragrances:", fragrances);
-            console.log("Beauty:", beauty);
-            console.log("Skincare:", skincare);
+            try {
+                const products = await getProducts();
+                setPerfumes(products);
+            } catch {
+                setError("Unable to load perfumes.");
+            }
         }
 
         fetchProducts();
@@ -20,6 +21,20 @@ function Shop() {
     return (
         <div>
             <h1>Shop</h1>
+            {error ? (
+                <p role="alert">{error}</p>
+            ) : perfumes.length === 0 ? (
+                <p>Loading perfumes...</p>
+            ) : (
+                <ul>
+                    {perfumes.map((perfume, index) => (
+                        <li key={`${perfume.name}-${index}`}>
+                            <h2>{perfume.name}</h2>
+                            <p>{perfume.description}</p>
+                        </li>
+                    ))}
+                </ul>
+            )}
         </div>
     );
 }
