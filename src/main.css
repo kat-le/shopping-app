@@ -1,0 +1,19 @@
+:root {
+  font-family: var(--font-sans);
+  color: #292722;
+  background: #f7f6f2;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+
+  --color-ink: #292722;
+  --color-muted: #77736a;
+  --color-paper: #f7f6f2;
+  --color-white: #fffefa;
+  --color-sand: #e9e5dc;
+  --color-line: #d9d5cd;
+  --color-accent: #895f63;
+  --color-accent-soft: #eadcda;
+  --color-accent-pale: #f3eae8;
+  --font-sans: "Montserrat", sans-serif;
+  --font-display: var(--font-sans);
+}
