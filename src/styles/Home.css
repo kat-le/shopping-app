@@ -93,27 +93,57 @@
 }
 
 .button {
+  position: relative;
   display: inline-flex;
   min-height: 48px;
   align-items: center;
   justify-content: center;
   gap: 24px;
   padding: 0 20px;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  color: var(--color-ink);
   font-size: 9px;
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  transition: background 160ms ease, color 160ms ease;
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
   margin-bottom: 8px;
 }
 
+.button::after {
+  position: absolute;
+  right: 0;
+  bottom: 4px;
+  left: 0;
+  height: 1px;
+  background: #edabc0;
+  box-shadow: 0 0 0 transparent;
+  content: "";
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
 .button--dark {
-  background: var(--color-ink);
-  color: var(--color-white);
+  background: transparent;
+  color: var(--color-ink);
 }
 
 .button--dark:hover {
-  background: var(--color-accent);
+  background: transparent;
+  transform: translateY(-1px);
+}
+
+.button--dark:hover::after,
+.button--dark:focus-visible::after {
+  box-shadow: 0 0 8px #e699ae, 0 0 18px rgb(230 153 174 / 95%);
+  transform: scaleX(1);
 }
 
 .button span,
@@ -225,20 +255,38 @@
 }
 
 .text-link {
+  position: relative;
   display: inline-flex;
   align-items: center;
   gap: 10px;
   padding-bottom: 6px;
-  border-bottom: 1px solid var(--color-line);
   font-size: 9px;
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
+.text-link::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  background: #edabc0;
+  box-shadow: 0 0 0 transparent;
+  content: "";
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
 .text-link:hover {
-  border-color: var(--color-accent);
   color: var(--color-accent);
+}
+
+.text-link:hover::after {
+  box-shadow: 0 0 5px #e699ae, 0 0 12px rgb(230 153 174 / 88%);
+  transform: scaleX(1);
 }
 
 .fragrance-grid {

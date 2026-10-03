@@ -58,12 +58,35 @@ button:focus-visible {
   color: var(--color-accent);
 }
 
+.site-nav__links a {
+  position: relative;
+}
+
+.site-nav__links a::after {
+  position: absolute;
+  right: 0;
+  bottom: -6px;
+  left: 0;
+  height: 1px;
+  background: #edabc0;
+  box-shadow: 0 0 0 transparent;
+  content: "";
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.site-nav__links a:hover::after {
+  box-shadow: 0 0 5px #e699ae, 0 0 12px rgb(230 153 174 / 88%);
+  transform: scaleX(1);
+}
+
 .site-nav__brand {
   display: inline-flex;
   width: fit-content;
   align-items: center;
-  gap: 10px;
-  letter-spacing: 0.2em;
+  gap: 12px;
+  letter-spacing: 0.24em;
 }
 
 .site-nav__brand-mark {
@@ -71,8 +94,9 @@ button:focus-visible {
   width: 30px;
   height: 30px;
   place-items: center;
-  border: 1px solid var(--color-accent);
-  background: var(--color-accent-soft);
+  border: 1px solid #edabc0;
+  background: transparent;
+  box-shadow: 0 0 5px #e699ae, 0 0 12px rgb(230 153 174 / 68%);
   font-family: var(--font-display);
   font-size: 17px;
   font-weight: 400;
