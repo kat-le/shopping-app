@@ -90,8 +90,8 @@ function Shop() {
                 />
               ))}
             </div>
-          ) : (
-            <p className="shop-empty">No fragrances match these filters.</p>
+          {/* ) : (
+            <p className="shop-empty">No fragrances match these filters.</p> */}
           {/* )} */}
 
           {pageCount > 1 && (
