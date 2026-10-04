@@ -74,7 +74,7 @@
   min-width: 38px;
   min-height: 38px;
   padding: 0 10px;
-  border: 1px solid var(--color-line);
+  border: 0;
   background: transparent;
   color: var(--color-ink);
   cursor: pointer;
@@ -85,7 +85,6 @@
 
 .shop-pagination button:hover:not(:disabled),
 .shop-pagination button[aria-current="page"] {
-  border-color: var(--color-accent);
   background: var(--color-accent-pale);
   color: var(--color-accent);
 }

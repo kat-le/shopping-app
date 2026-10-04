@@ -4,10 +4,9 @@ export function getProductsFromDataset() {
     return perfumes;
 }
 
-/*
 export async function getProducts() {
     const response = await fetch(
-        "https://perfumapidatabase.onrender.com/perfumes?limit=500&offset=0"
+        "/api/perfumes?limit=500&offset=0"
     );
 
     if (!response.ok) {
@@ -27,4 +26,3 @@ export async function getProducts() {
             price: Math.floor(Math.random() * 476) + 25,
         }));
 }
-*/

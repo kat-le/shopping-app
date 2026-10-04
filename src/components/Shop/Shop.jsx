@@ -1,4 +1,5 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+//import { getProducts } from "../../api/productsApi";
 import { getProductsFromDataset } from "../../api/productsApi";
 import Filter from "./Filter";
 import PerfumeCard from "./PerfumeCard";
@@ -11,6 +12,9 @@ const PRODUCTS_PER_PAGE = 20;
 const perfumes = getProductsFromDataset();
 
 function Shop() {
+  // const [perfumes, setPerfumes] = useState([]);
+  // const [isLoading, setIsLoading] = useState(true);
+  // const [loadError, setLoadError] = useState("");
   const [filters, setFilters] = useState({
     brand: "",
     minimumPrice: "",
@@ -19,13 +23,34 @@ function Shop() {
   const [page, setPage] = useState(1);
   const [selectedPerfume, setSelectedPerfume] = useState(null);
 
+  // useEffect(() => {
+  //   let isCurrent = true;
+
+  //   getProducts()
+  //     .then((products) => {
+  //       if (isCurrent) setPerfumes(products);
+  //     })
+  //     .catch((error) => {
+  //       if (isCurrent) {
+  //         setLoadError(error instanceof Error ? error.message : String(error));
+  //       }
+  //     })
+  //     .finally(() => {
+  //       if (isCurrent) setIsLoading(false);
+  //     });
+
+  //   return () => {
+  //     isCurrent = false;
+  //   };
+  // }, []);
+
   const brands = useMemo(
     () => [...new Set(perfumes.map((perfume) => perfume.brand))].sort((a, b) => a.localeCompare(b)),
-    [],
+    [perfumes],
   );
   const filteredPerfumes = useMemo(
     () => filterPerfumes(perfumes, filters),
-    [filters],
+    [filters, perfumes],
   );
 
   const pageCount = Math.ceil(filteredPerfumes.length / PRODUCTS_PER_PAGE);
@@ -51,7 +76,11 @@ function Shop() {
             {currentPage > 0 && <p>Page {currentPage} of {pageCount}</p>}
           </div>
 
-          {visiblePerfumes.length > 0 ? (
+          {/* {isLoading ? (
+            <p className="shop-message" role="status">Loading fragrances...</p>
+          ) : loadError ? (
+            <p className="shop-message" role="alert">Unable to load fragrances: {loadError}</p>
+          ) : visiblePerfumes.length > 0 ? ( */}
             <div className="shop-grid">
               {visiblePerfumes.map((perfume) => (
                 <PerfumeCard
@@ -63,7 +92,7 @@ function Shop() {
             </div>
           ) : (
             <p className="shop-empty">No fragrances match these filters.</p>
-          )}
+          {/* )} */}
 
           {pageCount > 1 && (
             <nav className="shop-pagination" aria-label="Perfume pages">

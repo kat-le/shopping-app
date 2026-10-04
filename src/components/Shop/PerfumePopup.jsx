@@ -18,6 +18,10 @@ function PerfumePopup({ perfume, onClose }) {
 
   if (!perfume) return null;
 
+  const description = perfume.description
+    ?.split("Read about this perfume in other languages:")[0]
+    .trimEnd();
+
   return (
     <dialog
       ref={dialogRef}
@@ -51,7 +55,7 @@ function PerfumePopup({ perfume, onClose }) {
           <p className="perfume-popup__brand">{perfume.brand}</p>
           <h2 id={titleId}>{perfume.name}</h2>
           <p id={descriptionId} className="perfume-popup__description">
-            {perfume.description || "No description is available for this fragrance."}
+            {description || "No description is available for this fragrance."}
           </p>
           <button className="perfume-popup__add" type="button">
             Add to cart
