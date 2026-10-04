@@ -6,7 +6,12 @@ const currency = new Intl.NumberFormat("en-US", {
   maximumFractionDigits: 0,
 });
 
-function PerfumeCard({ perfume, onSelect }) {
+// const handleAddToCart = (perfume) => {
+//   console.log(`Added ${perfume.name} to cart.`);
+// }
+
+
+function PerfumeCard({ perfume, onSelect, onAddToCart }) {
   return (
     <article className="shop-card">
       <button
@@ -29,7 +34,7 @@ function PerfumeCard({ perfume, onSelect }) {
           <p className="shop-card__price">{currency.format(perfume.price)}</p>
         </div>
       </button>
-      <button className="shop-card__add" type="button">
+      <button className="shop-card__add" type="button" onClick={() => onAddToCart(perfume)}>
         Add to cart
       </button>
     </article>

@@ -13,7 +13,7 @@
 }
 
 .shop-layout {
-  width: min(100%, 1280px);
+  width: min(100%, 1600px);
   display: block;
   margin-inline: auto;
   padding: clamp(72px, 9vw, 128px) clamp(20px, 5vw, 72px) 0;

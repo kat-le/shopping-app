@@ -1,25 +1,16 @@
 import { Link } from "react-router";
 import perfumeHero from "../assets/perfume-hero.png";
 import storyImage from "../assets/about-home.jpg";
+import santalImage from "../assets/perfume-home-1.png";
+import roseImage from "../assets/perfume-home-2.png";
+import boisImage from "../assets/perfume-home-3.png";
 import "../styles/Home.css";
 
 const fragrances = [
-  { name: "Santal 33", note: "Sandalwood · Cardamom · Leather", price: "$98" },
-  { name: "Rose d’Orient", note: "Damask rose · Saffron · Amber", price: "$112" },
-  { name: "Bois de Minuit", note: "Cedar · Fig · Vetiver", price: "$105" },
+  { name: "Santal 33", note: "Sandalwood · Cardamom · Leather", price: "$98", src: santalImage },
+  { name: "Rose d’Orient", note: "Damask rose · Saffron · Amber", price: "$112", src: roseImage },
+  { name: "Bois de Minuit", note: "Cedar · Fig · Vetiver", price: "$105", src: boisImage },
 ];
-
-function ImagePlaceholder({ label, className = "" }) {
-  return (
-    <div
-      className={`image-placeholder ${className}`}
-      role="img"
-      aria-label={`${label} image placeholder`}
-    >
-      <span>insert image here</span>
-    </div>
-  );
-}
 
 function Home() {
   return (
@@ -69,9 +60,10 @@ function Home() {
         <div className="fragrance-grid">
           {fragrances.map((fragrance, index) => (
             <article className="fragrance-card" key={fragrance.name}>
-              <ImagePlaceholder
-                label={`${fragrance.name} product`}
+              <img
                 className="fragrance-card__image"
+                src={fragrance.src}
+                alt={`${fragrance.name} perfume`}
               />
               <div className="fragrance-card__details">
                 <div>

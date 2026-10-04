@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { useOutletContext } from "react-router";
 //import { getProducts } from "../../api/productsApi";
 import { getProductsFromDataset } from "../../api/productsApi";
 import Filter from "./Filter";
@@ -22,6 +23,8 @@ function Shop() {
   });
   const [page, setPage] = useState(1);
   const [selectedPerfume, setSelectedPerfume] = useState(null);
+  const { handleAddToCart } = useOutletContext();
+
 
   // useEffect(() => {
   //   let isCurrent = true;
@@ -63,6 +66,8 @@ function Shop() {
     setPage(1);
   }
 
+
+
   return (
     <main className="shop-page">
       <ShopHeader />
@@ -87,6 +92,7 @@ function Shop() {
                   key={perfume.id}
                   perfume={perfume}
                   onSelect={setSelectedPerfume}
+                  onAddToCart={handleAddToCart}
                 />
               ))}
             </div>

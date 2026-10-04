@@ -253,6 +253,12 @@
   padding: clamp(72px, 9vw, 120px) clamp(28px, 9vw, 144px);
 }
 
+.home-collection > .section-heading,
+.home-collection > .fragrance-grid {
+  max-width: 1200px;
+  margin-inline: auto;
+}
+
 .section-heading {
   display: flex;
   align-items: end;
@@ -314,17 +320,13 @@
 }
 
 .fragrance-card__image {
-  width: 100%;
   aspect-ratio: 0.83;
   margin-bottom: 18px;
-}
-
-.fragrance-card:nth-child(2) .fragrance-card__image {
-  background: var(--color-accent-pale);
-}
-
-.fragrance-card:nth-child(3) .fragrance-card__image {
-  background: var(--color-accent-soft);
+  object-fit: contain;
+  height: min(70%, 600px);
+  max-width: 80%;
+  display: flex;
+  margin-inline: auto;
 }
 
 .fragrance-card__details {
