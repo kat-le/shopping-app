@@ -6,6 +6,11 @@ function Layout() {
 
   const [cartItems, setCartItems] = useState([]);
 
+  const totalItems = cartItems.reduce(
+    (sum, perfume) => sum + perfume.quantity,
+    0
+  );
+
   function handleAddToCart(perfume) {
     setCartItems((currentItems) => [
       ...currentItems, 
@@ -23,11 +28,12 @@ function Layout() {
   
   return (
     <>
-      <NavBar />
+      <NavBar totalItems={totalItems} />
       <Outlet 
          context={{
           cartItems,
           setCartItems,
+          totalItems,
           handleAddToCart,
           handleRemoveFromCart
         }}

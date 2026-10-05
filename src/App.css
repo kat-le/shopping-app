@@ -122,10 +122,26 @@ button:focus-visible {
 }
 
 .site-nav__cart {
+  position: relative;
   display: grid;
   width: 32px;
   height: 36px;
   place-items: center;
+}
+
+.site-nav__cart-count {
+  position: absolute;
+  top: 0;
+  right: -3px;
+  display: grid;
+  width: 18px;
+  height: 18px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: var(--color-white);
+  font-size: 10px;
+  line-height: 1;
 }
 
 .site-nav__cart svg {

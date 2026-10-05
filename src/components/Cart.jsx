@@ -3,14 +3,14 @@ import { useEffect, useState } from "react";
 import "../styles/Cart.css";
 
 function Cart() {
-  const { cartItems, handleRemoveFromCart, setCartItems } = useOutletContext();
+  const { cartItems, handleRemoveFromCart, setCartItems, totalItems} = useOutletContext();
   const totalPrice = cartItems.reduce((sum, perfume) => sum + perfume.price * perfume.quantity,0);
-  const [ totalItems, setTotalItems ] = useState(0)
+  // const [ totalItems, setTotalItems ] = useState(0)
 
-  useEffect(() => {
-    const total = cartItems.reduce((sum, perfume) => sum + perfume.quantity, 0);
-    setTotalItems(total);
-  }, [cartItems]);
+  // useEffect(() => {
+  //   const total = cartItems.reduce((sum, perfume) => sum + perfume.quantity, 0);
+  //   setTotalItems(total);
+  // }, [cartItems]);
 
   function handleIncreaseQuantity(perfume) {
     setCartItems((currentItems) =>
@@ -22,7 +22,9 @@ function Cart() {
   function handleDecreaseQuantity(perfume) {
     setCartItems((currentItems) =>
       currentItems.map((item) =>
-        item.id === perfume.id ? { ...item, quantity: item.quantity - 1 } : item
+        item.id === perfume.id
+          ? { ...item, quantity: Math.max(1, item.quantity - 1) }
+          : item
       )
     );
   }
@@ -51,6 +53,7 @@ function Cart() {
                         <button 
                           type="button" 
                           aria-label="Decrease quantity"
+                          disabled={perfume.quantity <= 1}
                           onClick={() => handleDecreaseQuantity(perfume)}>
                           −
                         </button>

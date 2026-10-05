@@ -66,8 +66,6 @@ function Shop() {
     setPage(1);
   }
 
-
-
   return (
     <main className="shop-page">
       <ShopHeader />
@@ -135,6 +133,7 @@ function Shop() {
       <PerfumePopup
         perfume={selectedPerfume}
         onClose={() => setSelectedPerfume(null)}
+        onAddToCart={handleAddToCart}
       />
     </main>
   );

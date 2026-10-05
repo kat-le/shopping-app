@@ -1,7 +1,8 @@
 import { useEffect, useId, useRef } from "react";
+import { useOutletContext } from "react-router";
 import "../../styles/PerfumePopup.css";
 
-function PerfumePopup({ perfume, onClose }) {
+function PerfumePopup({ perfume, onClose, onAddToCart }) {
   const dialogRef = useRef(null);
   const titleId = useId();
   const descriptionId = useId();
@@ -57,7 +58,7 @@ function PerfumePopup({ perfume, onClose }) {
           <p id={descriptionId} className="perfume-popup__description">
             {description || "No description is available for this fragrance."}
           </p>
-          <button className="perfume-popup__add" type="button">
+          <button className="perfume-popup__add" type="button" onClick={() => onAddToCart(perfume)}>
             Add to cart
           </button>
         </div>

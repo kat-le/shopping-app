@@ -1,4 +1,4 @@
-import "../../styles/PerfumeCard.css";
+ import "../../styles/PerfumeCard.css";
 
 const currency = new Intl.NumberFormat("en-US", {
   style: "currency",
