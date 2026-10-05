@@ -9,9 +9,16 @@ function Layout() {
   function handleAddToCart(perfume) {
     setCartItems((currentItems) => [
       ...currentItems, 
-      perfume
+      {      
+        ...perfume,
+        quantity: 1
+      }
     ]);
     console.log(`Added ${perfume.name} to cart. Total items in cart: ${cartItems.length + 1}`);
+  }
+
+  function handleRemoveFromCart(itemIndex) {
+    setCartItems((currentItems) => currentItems.filter((_, index) => index !== itemIndex));
   }
   
   return (
@@ -20,7 +27,9 @@ function Layout() {
       <Outlet 
          context={{
           cartItems,
-          handleAddToCart
+          setCartItems,
+          handleAddToCart,
+          handleRemoveFromCart
         }}
       />
     </>
