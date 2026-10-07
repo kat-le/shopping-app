@@ -1,16 +1,10 @@
 import { useOutletContext } from "react-router";
 import { useEffect, useState } from "react";
-import "../styles/Cart.css";
+import "../../styles/Cart.css";
 
 function Cart() {
   const { cartItems, handleRemoveFromCart, setCartItems, totalItems} = useOutletContext();
   const totalPrice = cartItems.reduce((sum, perfume) => sum + perfume.price * perfume.quantity,0);
-  // const [ totalItems, setTotalItems ] = useState(0)
-
-  // useEffect(() => {
-  //   const total = cartItems.reduce((sum, perfume) => sum + perfume.quantity, 0);
-  //   setTotalItems(total);
-  // }, [cartItems]);
 
   function handleIncreaseQuantity(perfume) {
     setCartItems((currentItems) =>

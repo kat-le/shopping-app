@@ -1,10 +1,10 @@
 import { Link } from "react-router";
-import perfumeHero from "../assets/perfume-hero.png";
-import storyImage from "../assets/about-home.jpg";
-import santalImage from "../assets/perfume-home-1.png";
-import roseImage from "../assets/perfume-home-2.png";
-import boisImage from "../assets/perfume-home-3.png";
-import "../styles/Home.css";
+import perfumeHero from "../../assets/images/perfume-hero.png";
+import storyImage from "../../assets/images/about-home.jpg";
+import santalImage from "../../assets/images/perfume-home-1.png";
+import roseImage from "../../assets/images/perfume-home-2.png";
+import boisImage from "../../assets/images/perfume-home-3.png";
+import "../../styles/Home.css";
 
 const fragrances = [
   { name: "Santal 33", note: "Sandalwood · Cardamom · Leather", price: "$98", src: santalImage },

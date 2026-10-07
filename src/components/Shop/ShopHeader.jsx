@@ -1,4 +1,4 @@
-import shopImage from "../../assets/shop.jpg";
+import shopImage from "../../assets/images/shop.jpg";
 import "../../styles/ShopHeader.css";
 
 function ShopHeader() {

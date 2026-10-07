@@ -1,6 +1,5 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { useOutletContext } from "react-router";
-//import { getProducts } from "../../api/productsApi";
 import { getProductsFromDataset } from "../../api/productsApi";
 import Filter from "./Filter";
 import PerfumeCard from "./PerfumeCard";
@@ -13,9 +12,6 @@ const PRODUCTS_PER_PAGE = 20;
 const perfumes = getProductsFromDataset();
 
 function Shop() {
-  // const [perfumes, setPerfumes] = useState([]);
-  // const [isLoading, setIsLoading] = useState(true);
-  // const [loadError, setLoadError] = useState("");
   const [filters, setFilters] = useState({
     brand: "",
     minimumPrice: "",
@@ -24,28 +20,6 @@ function Shop() {
   const [page, setPage] = useState(1);
   const [selectedPerfume, setSelectedPerfume] = useState(null);
   const { handleAddToCart } = useOutletContext();
-
-
-  // useEffect(() => {
-  //   let isCurrent = true;
-
-  //   getProducts()
-  //     .then((products) => {
-  //       if (isCurrent) setPerfumes(products);
-  //     })
-  //     .catch((error) => {
-  //       if (isCurrent) {
-  //         setLoadError(error instanceof Error ? error.message : String(error));
-  //       }
-  //     })
-  //     .finally(() => {
-  //       if (isCurrent) setIsLoading(false);
-  //     });
-
-  //   return () => {
-  //     isCurrent = false;
-  //   };
-  // }, []);
 
   const brands = useMemo(
     () => [...new Set(perfumes.map((perfume) => perfume.brand))].sort((a, b) => a.localeCompare(b)),
