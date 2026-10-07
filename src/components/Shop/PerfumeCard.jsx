@@ -6,11 +6,6 @@ const currency = new Intl.NumberFormat("en-US", {
   maximumFractionDigits: 0,
 });
 
-// const handleAddToCart = (perfume) => {
-//   console.log(`Added ${perfume.name} to cart.`);
-// }
-
-
 function PerfumeCard({ perfume, onSelect, onAddToCart }) {
   return (
     <article className="shop-card">
